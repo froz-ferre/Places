@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/Observable';
 const httpOptions = {
   headers: new HttpHeaders({
     'Access-Control-Allow-Origin': '*'
-    // 'Origin': 'https://froz-ferre.github.io'
   })
 };
 
@@ -21,5 +20,11 @@ export class GooPlacesService {
       httpOptions
     );
   }
+
+  search() {
+
+  }
+
+
 
 }
