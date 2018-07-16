@@ -1,3 +1,14 @@
-<p>
-  search works!
-</p>
+<div class="card-deck">
+  <div class="card" style="width: 18rem;" *ngFor="let place of gooPlacesService.places">
+    <img class="card-img-top" 
+      src="https://maps.googleapis.com/maps/api/place/photo?photoreference={{place.photos[0].photo_reference}}&key=AIzaSyBPt5477YfVoR2BUv7d4VbBztsiCmINydk" 
+      alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{place.name}}</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">{{place.formatted_address}}</small>
+    </div>
+  </div>
+</div>
