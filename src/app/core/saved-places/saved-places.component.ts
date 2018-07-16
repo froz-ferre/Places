@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { GooPlacesService } from '../services/goo-places.service';
 
 @Component({
-  selector: 'app-place-card',
-  templateUrl: './place-card.component.html',
-  styleUrls: ['./place-card.component.css']
+  selector: 'app-saved-places',
+  templateUrl: './saved-places.component.html',
+  styleUrls: ['./saved-places.component.css']
 })
-export class PlaceCardComponent implements OnInit {
+export class SavedPlacesComponent implements OnInit {
 
   constructor(private gooPlacesService: GooPlacesService) { }
 
@@ -15,7 +15,7 @@ export class PlaceCardComponent implements OnInit {
   }
 
   testMeth() {
-    //this.gooPlacesService.textSearch().subscribe(res => console.log(res));
+    // this.gooPlacesService.textSearch().subscribe(res => console.log(res));
   }
 
 }
