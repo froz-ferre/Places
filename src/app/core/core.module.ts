@@ -7,6 +7,7 @@ import { GooPlacesService } from './services/goo-places.service';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'saved', pathMatch: 'full'},
@@ -19,7 +20,8 @@ const appRoutes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ModalModule.forRoot()
   ],
   declarations: [ContentComponent, InputFormComponent, SavedPlacesComponent, SearchComponent],
   providers: [GooPlacesService],

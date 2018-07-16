@@ -1,14 +1,27 @@
 <div class="card-deck">
   <div class="card" style="width: 18rem;" *ngFor="let place of gooPlacesService.places">
-    <img class="card-img-top" 
-      src="https://maps.googleapis.com/maps/api/place/photo?photoreference={{place.photos[0].photo_reference}}&key=AIzaSyBPt5477YfVoR2BUv7d4VbBztsiCmINydk" 
-      alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{place.name}}</h5>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
     </div>
     <div class="card-footer">
       <small class="text-muted">{{place.formatted_address}}</small>
+      <a href="http://maps.google.com/maps?q=loc:{{place.geometry.location.lat}},{{place.geometry.location.lng}}" target="_blank">Open Map</a>
+      <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+      <ng-template #template>
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">{{place.name}}</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <iframe width="600" height="450" frameborder="0" style="border:0" src="{{sanitize(place.geometry.location.lat, place.geometry.location.lng)}}" allowfullscreen></iframe>
+          </div>
+        </ng-template>
+      <button>Save Place</button>
     </div>
   </div>
 </div>
+
+  <!-- {{place.geometry.location.lat}},{{place.geometry.location.lng}} -->
