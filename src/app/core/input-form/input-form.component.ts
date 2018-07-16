@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GooPlacesService } from '../services/goo-places.service';
 
 @Component({
   selector: 'app-input-form',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputFormComponent implements OnInit {
 
-  constructor() { }
+  private searchText: string;
+
+  constructor(private gooPlacesService: GooPlacesService) { 
+    this.searchText = '';
+  }
 
   ngOnInit() {
+  }
+
+  search() {
+    this.gooPlacesService.textSearch(this.searchText).subscribe(res => console.log(res));
+    this.searchText = '';
   }
 
 }

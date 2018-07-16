@@ -14,17 +14,15 @@ export class GooPlacesService {
 
   constructor(private http: HttpClient) { }
 
-  test(): Observable<any> {
+  validateName(name: string): string {
+    // Arctic Monkeys => Arctic+Monkeys
+    return name = name.includes(' ') ?  name.split(' ').join('+') : name;
+  }
+
+  textSearch(query: string): Observable<any> {
     return this.http.get(
-      `/maps/api/place/textsearch/json?query=restaurants+in+Sydney&key=AIzaSyBPt5477YfVoR2BUv7d4VbBztsiCmINydk`,
+      `/maps/api/place/textsearch/json?query=${this.validateName(query)}&key=AIzaSyBPt5477YfVoR2BUv7d4VbBztsiCmINydk`,
       httpOptions
     );
   }
-
-  search() {
-
-  }
-
-
-
 }

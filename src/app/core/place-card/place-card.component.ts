@@ -15,7 +15,7 @@ export class PlaceCardComponent implements OnInit {
   }
 
   testMeth() {
-    this.gooPlacesService.test().subscribe(res => console.log(res));
+    //this.gooPlacesService.textSearch().subscribe(res => console.log(res));
   }
 
 }

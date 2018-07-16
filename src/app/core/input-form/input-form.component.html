@@ -1,3 +1,6 @@
-<p>
-  input-form works!
-</p>
+<form class="form-inline">
+  <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="searchText" name="searchText" placeholder="What are we looking for?" (submit)="search()">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="search()">Search</button>  
+</form>
