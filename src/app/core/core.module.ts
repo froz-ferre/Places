@@ -1,3 +1,4 @@
+import { AFService } from './services/af.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentComponent } from './content/content.component';
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot()
   ],
   declarations: [ContentComponent, InputFormComponent, SavedPlacesComponent, SearchComponent],
-  providers: [GooPlacesService],
+  providers: [GooPlacesService, AFService],
   exports: [
     ContentComponent,
     InputFormComponent,

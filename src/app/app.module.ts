@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AlertModule } from 'ngx-bootstrap/alert';
 
 
@@ -30,7 +31,8 @@ export const GooPlacesAPIKey = 'AIzaSyBPt5477YfVoR2BUv7d4VbBztsiCmINydk';
     CoreModule,
     HttpClientModule,
     AlertModule.forRoot(),
-    AngularFireModule.initializeApp(FBConf)
+    AngularFireModule.initializeApp(FBConf),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent],

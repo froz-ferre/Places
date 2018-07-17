@@ -7,7 +7,7 @@
     <div class="card-footer">
       <small class="text-muted">{{place.formatted_address}}</small>
       <a href="http://maps.google.com/maps?q=loc:{{place.geometry.location.lat}},{{place.geometry.location.lng}}" target="_blank">Open Map</a>
-      <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Open modal</button> -->
+      <button type="button" class="btn btn-primary" (click)="openModal(template); sanitize(place.geometry.location.lat, place.geometry.location.lng, mapFrame)">Open modal</button>
       <ng-template #template>
           <div class="modal-header">
             <h4 class="modal-title pull-left">{{place.name}}</h4>
@@ -16,10 +16,10 @@
             </button>
           </div>
           <div class="modal-body">
-            <iframe width="600" height="450" frameborder="0" style="border:0" src="{{sanitize(place.geometry.location.lat, place.geometry.location.lng)}}" allowfullscreen></iframe>
+            <iframe width="600" height="450" frameborder="0" style="border:0" allowfullscreen #mapFrame></iframe>
           </div>
         </ng-template>
-      <button>Save Place</button>
+      <button class="btn btn-primary" (click)="savePlace(place)">Save Place</button>
     </div>
   </div>
 </div>
