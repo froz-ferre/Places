@@ -12,6 +12,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class SearchComponent implements OnInit {
 
+  @ViewChild('mapFrame') frame;
+
   link;
   modalRef: BsModalRef;
   config = {
@@ -29,13 +31,13 @@ export class SearchComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
-    console.log(template.elementRef);
   }
 
-  sanitize(lat, lng, el: ElementRef) {
+  sanitize(lat, lng) {
+    console.log(this.frame);
     // tslint:disable-next-line:max-line-length
     this.link = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.google.com/maps/embed/v1/place?key=AIzaSyBPt5477YfVoR2BUv7d4VbBztsiCmINydk&center=' + lat + ',' + lng);
-    this.renderer.setAttribute(el.nativeElement, 'src', this.link);
+    this.renderer.setAttribute(this.frame.nativeElement, 'src', this.link);
   }
 
   savePlace(place) {

@@ -19,7 +19,7 @@ export class AFService {
       types: place.types || null,
       lat: place.geometry.location.lat,
       lng: place.geometry.location.lng,
-      added: Date.now
+      added: Date.now()
     });
   }
 

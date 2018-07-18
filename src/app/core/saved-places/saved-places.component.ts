@@ -1,6 +1,8 @@
 import { AFService } from './../services/af.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { GooPlacesService } from '../services/goo-places.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-saved-places',
@@ -10,9 +12,11 @@ import { GooPlacesService } from '../services/goo-places.service';
 export class SavedPlacesComponent implements OnInit {
 
   places;
+  modalRef: BsModalRef;
 
   constructor(private gooPlacesService: GooPlacesService,
-              private afService: AFService) { }
+              private afService: AFService,
+              private modalService: BsModalService) { }
 
   ngOnInit() {
     this.afService.getPlaces().snapshotChanges()
@@ -26,7 +30,20 @@ export class SavedPlacesComponent implements OnInit {
 
       // sort array by isChecked like false -> true
       this.places.sort((a, b) => a.added - b.added);
-});
+    });
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  decline(): void {
+    this.modalRef.hide();
+  }
+
+  remove($key) {
+    this.afService.removePlace($key);
+    this.modalRef.hide();
   }
 
 }

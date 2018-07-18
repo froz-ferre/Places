@@ -1,1 +1,14 @@
-<p *ngFor="let place of places">{{place.title}}</p>
+<div *ngFor="let place of places">
+    {{place.title}}
+    <button type="button" class="btn btn-danger" (click)="openModal(template)" data-toggle="modal" data-target="#exampleModal">
+            Delete
+    </button>
+
+    <ng-template #template>
+            <div class="modal-body text-center">
+              <p>Do you want to delete {{place.title}}?</p>
+              <button type="button" class="btn btn-danger" (click)="remove(place.$key)" >Delete</button>
+              <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+            </div>
+    </ng-template>
+</div>

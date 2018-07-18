@@ -8,8 +8,9 @@
         </div>
         <div class="card-footer">
           <small class="text-muted">{{place.formatted_address}}</small>
-          <a href="http://maps.google.com/maps?q=loc:{{place.geometry.location.lat}},{{place.geometry.location.lng}}" target="_blank">Open Map</a>
-          <button type="button" class="btn btn-primary" (click)="openModal(template); sanitize(place.geometry.location.lat, place.geometry.location.lng, mapFrame)">Open modal</button>
+          <!-- http://maps.google.com/maps?q=loc:{{place.geometry.location.lat}},{{place.geometry.location.lng}} -->
+          <a href="https://www.google.com/maps/search/?api=1&query={{gooPlacesService.validateName(place.name)}}" target="_blank">Open Map</a>
+          <button type="button" class="btn btn-primary" (click)="openModal(template); sanitize(place.geometry.location.lat, place.geometry.location.lng)">Open modal</button>
           <ng-template #template>
               <div class="modal-header">
                 <h4 class="modal-title pull-left">{{place.name}}</h4>
@@ -18,7 +19,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <iframe width="600" height="450" frameborder="0" style="border:0" allowfullscreen #mapFrame></iframe>
+                <iframe width="600" height="450" frameborder="0"  src="https://www.google.com/maps/search/?api=1&query={{gooPlacesService.validateName(place.name)}}" style="border:0" allowfullscreen #mapFrame></iframe>
               </div>
             </ng-template>
           <button class="btn btn-primary" (click)="savePlace(place)">Save Place</button>
