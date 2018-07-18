@@ -18,7 +18,7 @@ export class GooPlacesService {
   constructor(private http: HttpClient) { }
 
   validateName(name: string): string {
-    // Arctic Monkeys => Arctic+Monkeys
+    // cafe bristol => cafe+bristol
     return name = name.includes(' ') ?  name.split(' ').join('+') : name;
   }
 
