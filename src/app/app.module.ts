@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { RouterModule } from '@angular/router';
 
 
 // P.S. Я знаю, что так делать нельзя, но для быстроты и простого деплоя...
@@ -30,6 +31,7 @@ export const GooPlacesAPIKey = 'AIzaSyBPt5477YfVoR2BUv7d4VbBztsiCmINydk';
     BrowserModule,
     CoreModule,
     HttpClientModule,
+    RouterModule,
     AlertModule.forRoot(),
     AngularFireModule.initializeApp(FBConf),
     AngularFireDatabaseModule
