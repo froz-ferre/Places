@@ -28,8 +28,7 @@ export class SavedPlacesComponent implements OnInit {
         this.places.push(x);
       });
 
-      // sort array by isChecked like false -> true
-      this.places.sort((a, b) => a.added - b.added);
+      this.places.sort((a, b) => b.added - a.added);
     });
   }
 

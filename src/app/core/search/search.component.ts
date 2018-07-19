@@ -4,6 +4,7 @@ import { Component, OnInit, TemplateRef, ViewChild, Renderer2, Input, AfterViewI
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -24,7 +25,8 @@ export class SearchComponent implements OnInit {
               private afService: AFService,
               private modalService: BsModalService,
               private sanitizer: DomSanitizer,
-              private renderer: Renderer2) { }
+              private renderer: Renderer2,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -42,6 +44,7 @@ export class SearchComponent implements OnInit {
 
   savePlace(place) {
     this.afService.save(place);
+    this.router.navigate(['saved']);
   }
 
 }
